@@ -84,14 +84,15 @@ public class StringCharOccurrence {
 
 		String str = "occurrence of character";
 		Map<Character, Long> charCountMap = str.chars().mapToObj(ch -> (char) ch)
-														.collect(Collectors.groupingBy(ch -> ch, Collectors.counting()));
+					.collect(Collectors.groupingBy(ch -> ch, Collectors.counting()));
 		charCountMap.forEach((k, v) -> System.out.println(k + " : " + v));
 
 
+		
 		String []str1 = {"arsh", "ashwini", "arsh", "ashwini", "ashwini", "sea", "red", "green"};
-		Map<Character, Long> stringCountMap = str.chars()
-				.mapToObj(st -> (char) st).collect(Collectors.groupingBy(st -> st, Collectors.counting()));
-		charCountMap.forEach((k, v) -> System.out.println(k + " : " + v));
+		Map<String, Long> stringCountMap = Arrays.stream(str1)
+					.collect(Collectors.groupingBy(s -> s, Collectors.counting()));
+		stringCountMap.forEach((k, v) -> System.out.println(k + " : " + v));
 
 		/*Map<String, Integer> stringsMap = new HashMap<>();
 		for (String s : str1) { // Iterate through the String array
