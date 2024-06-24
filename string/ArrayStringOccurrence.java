@@ -17,4 +17,12 @@ public class ArrayStringOccurrence {
         // Print the count of each string
         map.forEach((key, value) -> System.out.println(key + ": " + value));
     }
+
+    // OR 
+
+    
+		String []str1 = {"arsh", "ashwini", "arsh", "ashwini", "ashwini", "sea", "red", "green"};
+		Map<String, Long> stringCountMap = Arrays.stream(str1)
+								.collect(Collectors.groupingBy(s -> s, Collectors.counting()));
+		stringCountMap.forEach((k, v) -> System.out.println(k + " : " + v));
 }
