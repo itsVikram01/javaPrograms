@@ -1,0 +1,44 @@
+Comparator :
+		------------
+			The Comparator interface is found in the java.util package and has a single method compare.
+			Comparator interface is used to define the order of objects.
+			It's particularly useful when you want to sort collections or arrays of objects in a specific order that is different from their natural order (defined by the Comparable interface).
+
+The Comparator interface is used to define a custom ordering for objects of a particular class.
+Unlike Comparable, which defines a natural ordering within a class, Comparator provides external flexibility for sorting based on different criteria.
+
+Key points:
+    . Comparator provides external flexibility for sorting.
+    . Create a separate Comparator class for each sorting criterion.
+    . Use Arrays.sort or Collections.sort with a Comparator to sort objects.
+
+Additional Considerations:
+    . For complex sorting scenarios, you can create multiple Comparator classes.
+    . Use lambda expressions or method references for concise Comparator implementations.
+    . Explore other methods in the Comparator interface for advanced use cases.
+
+
+
+				public class Product {
+					private String name;
+					private double price;
+					// Getters and setters for name and price
+				}
+				public class Main {
+					public static void main(String[] args) {
+						List<Product> products = Arrays.asList(new Product("Laptop", 800.00),
+																new Product("Phone", 500.00),
+																new Product("Headphones", 100.00));
+						// Comparator for sorting by price (ascending)
+						Comparator<Product> priceComparator = (product1, product2) -> Double.compare(product1.getPrice(), product2.getPrice());
+
+						// Sort the list using the comparator
+						List<Product> sortedProducts = products.stream()
+																.sorted(priceComparator)
+																.collect(Collectors.toList());
+						System.out.println("Products sorted by price (ascending):");
+						for (Product product : sortedProducts) {
+							System.out.println(product);
+						}
+					}
+				}
